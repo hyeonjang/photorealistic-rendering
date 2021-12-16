@@ -47,10 +47,10 @@
 
 	<bsdf type="diffuse" id="tex">
 		<texture type="bitmap" name="reflectance">
-			<string name="filename" value="../../texture/512x512.png"/>
-
+			<string name="filename" value="./hokusai-wave.jpg"/>
+			
 			<transform name="to_uv">
-				<translate x="0" y="-1."/>
+				<translate x="1" y="-1."/>
 			</transform>
 		</texture>
 	
