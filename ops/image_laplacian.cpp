@@ -7,16 +7,19 @@
 
 using namespace torch::indexing;
 
-void temp() {
-
-}
-
-torch::Tensor laplacian_smooth(torch::Tensor image, torch::Tensor gradient) {
+torch::Tensor laplacian_smooth(
+  torch::Tensor image, 
+  torch::Tensor gradient, 
+  torch::Scalar step_size) {
 
   const int padding = 3;
 
-  std::cout << "print somthing" << std::endl;
-  std::cout << image.sizes() << std::endl;
+  float array[] = {
+    0.1070, 0.1131, 0.1070,
+    0.1131, 0.1196, 0.1131,
+    0.1070, 0.1131, 0.1070,
+  };
+  torch::Tensor gk_2d = torch::from_blob(array, {3, 3});
 
   torch::Tensor output = torch::zeros_like(image);
 
@@ -32,26 +35,23 @@ torch::Tensor laplacian_smooth(torch::Tensor image, torch::Tensor gradient) {
   pad_image.index_put_({Slice(1, -1), Slice(1, -1), Slice()}, image);
   pad_g_img.index_put_({Slice(1, -1), Slice(1, -1), Slice()}, gradient);
 
-  omp_set_num_threads(32);
-  std::cout << omp_get_thread_num() << std::endl;
-
   // iteration
-  #pragma omp parallel for
-  for(int z=0; z<image.size(2); z++)
-    for(int x=0; x<image.size(1); x++)
-      for(int y=0; y<image.size(0); y++) {
+  for(int d=0; d<image.size(2); d++)
 
-        auto k = pad_image.index({Slice(y, y+3), Slice(x, x+3), z});
-        auto d = torch::diag(torch::diag(k));
-        auto w = torch::linalg::inv(d).mm(k);
-        auto l = w-d;
-        auto I_L = torch::eye(k.size(0)) + l;
+    #pragma omp parallel for num_threads(omp_get_max_threads())
+    for(int h=0; h<image.size(1); h++)
+      for(int w=0; w<image.size(0); w++) {
+
+        auto kern = gk_2d.mm(pad_image.index({Slice(w, w+3), Slice(h, h+3), d}));
+        auto diag = torch::diag(torch::diag(kern));
+        auto weig = torch::linalg::inv(diag).mm(kern);
+        auto lapl = weig-diag;
+        auto I_L = torch::eye(kern.size(0)) + lapl.mul_(step_size);
         output.index_put_(
-          {y, x, z}, 
-          I_L.inverse().mm(pad_g_img.index({Slice(y, y+3), Slice(x, x+3), z})).sum()
+          {w, h, d}, 
+          I_L.inverse().mm(pad_g_img.index({Slice(w, w+3), Slice(h, h+3), d})).sum()
           );
       }
-
   return output;
 }
 

@@ -125,7 +125,7 @@ def optimize_ad():
         opt.zero_grad()
         
         for name in params_names:
-            params_torch[name] = torch.sigmoid(prop_torch[name])
+            params_torch[name] = torch.clamp(prop_torch[name], min=0, max=1)
             tex0 = mitsuba.core.Float(params_torch[name].flatten())
             tex1 = ru.ravel_float(tex0)
             ru.unravel(tex1, params[name])
@@ -149,6 +149,7 @@ def optimize_ad():
         print('[{:03d}] Loss: {:.6f}, took {:.2f}s'.format(i, image_loss, time.time() - t0))
         ru.write_image(os.path.join(outdir['out'], f"out_{i:04d}.exr"), rendered)
         ru.write_image(os.path.join(outdir['tex'], f"tex_{i:04d}.exr"), params[params_names[0]], (512,512))
+        # ru.write_image(os.path.join(outdir['tex'], f"tex_{i:04d}.exr"), params[params_names[0]], (256,256))
         # ru.write_image(os.path.join(outdir['env'], f"env_{i:04d}.exr"), params[params_names[1]], (512,512))
 
     f.close()

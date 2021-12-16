@@ -101,16 +101,16 @@ def adam(params: List[Tensor],
                             d = torch.diag(torch.diag(k))
                             w = torch.linalg.pinv(d) @ k
                             l = w-d 
-                            I_L = torch.eye(k.shape[0]) + l
+                            I_L = torch.eye(k.shape[0]) + step_size* l
                             output[y, x, z] = (I_L.inverse() @ gradi_padded[y:y+padding, x:x+padding, z]).sum()
                 return output
 
-            # l_p = i + step_size*(w-d)
+            l_p = i + step_size*(w-d)
 
             z = time.time()
             # g = cv2.filter2D(grad.detach().cpu().numpy(), -1, l_p)
             # g = torch.from_numpy(g).to(device='cuda')
-            g = torch.ops.image.laplacian_smooth(param, grad)
+            g = torch.ops.image.laplacian_smooth(param, grad, step_size)
             # g = convolve2d(param.detach(), grad.detach())
             print(time.time()-z)
 
