@@ -1,0 +1,12 @@
+\section*{Formulation of the Dual Problem - Part 1}\label{ch:ch3label}
+We write the Lagrangian with the dual variables $\beta^t \mu_t$, $\beta^t \lambda_t$, $\beta^ty_t$ and $\beta^t z_t$:
+
+\begin{align*}
+L(c_t,l_t,s_{t+1},m_{t+1},\mu_{t},\lambda_t,y_t,z_t) &= \sum_{t=0}^{N-1}{\beta^t}[\ln(c_t)+\ln(1-l_t)+\mu_t(m_t- P_t c_t)]\\
+&\quad+\sum_{t=0}^{N-2}{\beta^t}\lambda_t(m_t+(1+R_t)s_t+P_t l_t + \tau_t - P_t c_t - m_{t+1} - s_{t+1})\\
+&\quad+\sum_{t=0}^{N-1}{\beta^t}(y_t(c_t-l_t)+z_t(s_t))
+\end{align*}
+In order to find the dual, we note that as two constraints, we will need $y_t=0$ and $z_t = 0$ otherwise the supremum would tend to infinity. Therefore,
+\begin{align*}
+g(\lambda_t,\mu_t) = \sup_{c_t,l_t,s_{t+1},m_{t+1}}L
+\end{align*} we set the gradient of the Lagrangian to zero since the Lagrangian is concave. This brings us to the KKT conditions, but we will return to this discussion.

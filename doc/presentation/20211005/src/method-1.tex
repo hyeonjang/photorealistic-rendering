@@ -1,0 +1,30 @@
+% !TEX root=../main.tex
+\documentclass[beamer]{standalone}
+\begin{document}
+% ==============================================================
+% Method intro
+% ==============================================================
+\begin{frame}{Method}
+    \begin{itemize}
+    \item Main goal is to determine a methodology 
+    for taking large descent steps in mesh optimizing problems 
+    using differentiable rendering
+    \begin{figure}
+        \begin{equation}
+            minimize_{x\in\mathbb{R}^{nX3}}  \; \Phi(R(x))
+        \end{equation}
+    \caption{where $x$ is collection of vertex positions, $R$ is rendering function, $\Phi$ is a loss function}
+    \end{figure}
+\end{itemize}
+
+% note %
+\note[item]{
+    As before said, the main goal of this paper is showing how to determine a methodology for taking large steps.
+    So, the objective function could be like here.
+    x is the vertex positions, R is rendering function and phi is loss function
+}
+\end{frame}
+
+
+
+\end{document}

@@ -1,0 +1,91 @@
+% !TEX root=./main.tex
+
+\documentclass[aspectratio=169]{beamer}
+
+\usecolortheme{seahorse}
+
+\usepackage{standalone}
+\usepackage{amsmath} % for matrix example
+\usepackage{upquote} % so single quotes can be directly pasted
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{multimedia}
+\usepackage{pgfpages} % for seperating pages
+\usepackage{algorithm,algorithmic}
+\usepackage{minted}
+\usepackage[thinc]{esdiff}
+
+\setbeameroption{show notes}
+\setbeameroption{show notes on second screen=right}
+
+\title{"Large Steps in Inverse Rendering of Geometry"}
+\subtitle{Baptiste Nicolet, Alec Jacobson, and Wenzel Jakob, \\ Proceedings of SIGGRAPH Asia 2021}
+\author{Hyeonjang An}
+
+\institute{
+    Photorealistic Rendering \\
+    GIST
+}
+
+\begin{document}
+\setbeamertemplate{caption}{\raggedright\insertcaption\par}
+\begin{frame}
+\titlepage
+
+\note[item]{
+    I am going to introduce the new paper from Siggraph Asia 2021.
+    The paper title is "Large steps in inverse rendering of geometry".
+
+    This guy, Wenzel Jakob, as we already know,  is the big guy in Rendering in Lausanne Technical University
+
+    And this guy, alec Jacobson is also big guy in Geometry Processing. Assistant professor in Toronto university.
+
+    Anyway, let me start.
+}
+
+\end{frame}
+
+\begin{frame}{Outline}
+    \tableofcontents
+
+
+    \note[item] {
+        This is the outline of my presentation
+    }
+
+\end{frame}
+
+\section{Problem statement}
+\section{Background}   
+    \subsection{Differentiable Rendering}
+    \subsection{laplace operator}
+\section{Method}
+    \subsection{\alert{Modifed Gradient Descent}}
+    \subsection{Reparameterization}
+    \subsection{Momentum and Variance}
+    \subsection{Remeshing}
+\section{Result}
+\section*{Conclusion}
+
+% 1. Problem statement
+\input{./src/intro}
+
+% 2. Background explanation
+\input{./src/background}
+
+% 3-1.method part
+\input{./src/method-1}
+
+% 3-2 method part
+\input{./src/method-2}
+
+% 3-3 method part
+\input{./src/method-3}
+
+% 4. results part
+\input{./src/result}
+
+% 5. conclusion
+\input{./src/conclusion}
+
+\end{document}

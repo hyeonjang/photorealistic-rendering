@@ -1,0 +1,53 @@
+\section*{Formulation of the Dual Problem - Part 2}\label{ch:ch3_2label}
+We have\\
+\begin{minipage}{0.2\textwidth}
+\begin{align*}
+	l_t = 1-\frac{1}{\lambda_t P_t}  
+\end{align*}
+\end{minipage}
+\begin{minipage}{0.2\textwidth}
+\begin{align*}
+	 c_t = \frac{1}{(\mu_t+\lambda_t)P_t}
+\end{align*}
+\end{minipage}
+\begin{minipage}{0.2\textwidth}
+\begin{align*}
+	s_{t+1} = 0
+\end{align*}
+\end{minipage}
+\begin{minipage}{0.2\textwidth}
+\begin{align*}
+	m_{t+1} = m_t(1+\tau_t/m_t)=\frac{1+g}{(\mu_t+\lambda_t)}
+\end{align*}
+\end{minipage}
+\\
+\begin{minipage}{0.4\textwidth}
+\begin{align*}
+	\lambda_t = \beta \lambda_{t+1}(1+R_{t+1})
+\end{align*}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+\begin{align*}
+	\beta(\mu_{t+1}+\lambda_{t+1})=\lambda_t
+\end{align*}
+\end{minipage}
+\begin{align*}
+g(\lambda_t,\mu_t) &= \sum_{t=0}^{N-1}{\beta^t}[\ln(\frac{1}{(\mu_t+\lambda_t)P_t})+\ln(\frac{1}{\lambda_t P_t})+\mu_t(m_t-\frac{1}{(\mu_t+\lambda_t)} )]\\
+&\quad+\sum_{t=0}^{N-2}{\beta^t}\lambda_t(m_t+(1+R_t)s_t+P_t(1-\frac{1}{\lambda_t}) + \tau_t - \frac{1}{(\mu_t+\lambda_t)} - \frac{1+g}{(\mu_t+\lambda_t)} )
+\end{align*}
+The dual problem then becomes
+\begin{align*}
+	\textrm{minimize} \quad\quad\quad\quad g(\lambda_t,\mu_t)
+\end{align*}
+\begin{align*}
+	\textrm{subject to} \quad\quad\quad\quad s_t = 0
+\end{align*}
+\begin{align*}
+	1-\frac{1}{\lambda_t P_t} = \frac{1}{(\mu_t+\lambda_t)P_t}
+\end{align*}
+\begin{align*}
+	\lambda_t = \beta \lambda_{t+1}(1+R_{t+1})
+\end{align*}
+\begin{align*}
+	\beta(\mu_{t+1}+\lambda_{t+1})=\lambda_t
+\end{align*}

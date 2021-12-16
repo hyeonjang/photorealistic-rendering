@@ -1,0 +1,42 @@
+<scene version="2.0.0">
+    <integrator type="path">
+        <integer name="max_depth" value="3"/>
+    </integrator>
+
+    <emitter type="envmap" id="my_envmap">
+        <string name="filename" value="../../texture/512x512.png"/>
+    </emitter>
+
+    <shape type="obj" id="bunny">
+        <string name="filename" value="bunny.obj"/>
+        <bsdf type="diffuse">
+            <texture type="bitmap" name="reflectance">
+                <string name="filename" value="../../texture/512x512.png"/>
+            </texture>
+        </bsdf>
+        <transform name="to_world">
+            <scale value="0.8"/>
+            <translate x="0" y="0.03" z="0"/>
+        </transform>
+    </shape>
+
+    <sensor type="perspective">
+        <transform name="to_world">
+            <lookat origin="-0.02, 0.1, .25"
+                    target="-0.02, 0.1, 0"
+                    up="0, 1, 0"/>
+        </transform>
+
+        <float name="fov" value="40"/>
+
+        <film type="hdrfilm">
+            <string name="pixel_format" value="rgb"/>
+            <integer name="width" value="256"/>
+            <integer name="height" value="256"/>
+        </film>
+
+        <sampler type="independent">
+            <integer name="sample_count" value="2"/>
+        </sampler>
+    </sensor>
+</scene>

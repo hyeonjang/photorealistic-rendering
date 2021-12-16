@@ -1,0 +1,52 @@
+% !TEX root=../main.tex
+\documentclass[beamer]{standalone}
+\begin{document}
+\begin{frame}{Summary}
+
+\begin{itemize}
+    \setlength\itemsep{1em}
+    \item Large steps (fast convergence) in Mesh optimizing using differentiable rendering by second-order derivate method
+    \item Not add regularization, filter the gradients of the original objective with the laplace.
+    \item Any adaptation can be possible, if second-order derivative is possible
+\end{itemize}
+
+    % notes %
+    \note[item]{
+
+        To summarize, in differentiable rendering, It is hard to optimize vertex position roughly. 
+        The authors solve this problem by applying second-order optimization method.
+        And this method can be applied in any other problems, if second-order derivative is possible
+
+    }
+
+\end{frame}
+
+\begin{frame}{Conclusion}
+
+    \begin{itemize}
+        \setlength\itemsep{1em}
+        \item Until now, only first derivative and regularaization are used
+        \item It is much better to take second-order derivative when taking mesh propertices
+        \item Second-order derivative can be combined with second-order optimization method like Newton's method, which has the faster convergence speed
+    \end{itemize}
+    
+        % notes %
+        \note[item]{
+            Finally, I have choosed some important points to remember.
+
+            I think these are the most important part of this paper.
+            
+            Until now, first derivative and regularaization are used.
+            But for polygonal mesh, or on mesh deformation problem, we should take second-order derivative propertices to get more high quailty results.
+            This second-order derivative can be combined with second-order optimization method like Newton's method. And this method has the faster convergence speed than others.
+        }
+        
+    \end{frame}
+
+    \begin{frame}{Q\&A}
+
+        \note[item] {
+            this is the end of the presentation
+        }
+    \end{frame}
+\end{document}

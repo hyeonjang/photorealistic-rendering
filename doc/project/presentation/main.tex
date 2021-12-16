@@ -1,0 +1,69 @@
+% !TEX root=./main.tex
+
+\documentclass[aspectratio=169]{beamer}
+
+\usecolortheme{seahorse}
+
+\usepackage{standalone}
+\usepackage{amsmath} % for matrix example
+\usepackage{upquote} % so single quotes can be directly pasted
+\usepackage{xcolor}
+\usepackage{pgfpages} % for seperating pages
+\usepackage{algorithm,algorithmic}
+\usepackage{minted}
+\usepackage{multicol}
+\usepackage{subfigure}
+\usepackage{graphicx}
+\usepackage[thinc]{esdiff}
+
+\setbeameroption{show notes}
+\setbeameroption{show notes on second screen=right}
+
+\title{"Applying gradient filtering on joint optimization"}
+\subtitle{Photo Realistic Rendering}
+\author{Hyeonjang An}
+
+\institute{
+    GIST
+}
+
+\begin{document}
+\setbeamertemplate{caption}{\raggedright\insertcaption\par}
+\begin{frame}
+\titlepage
+
+\end{frame}
+
+\begin{frame}{Outline}
+    \tableofcontents
+\end{frame}
+
+\section{Intro}
+    \subsection{Problem statement and Idea}
+    \subsection{Related Work}
+\section{Method}
+    \subsection{Implementation of the previous work: Mesh case}
+    \subsection{Laplacian operator on the image kernel}
+    \subsection{The choice on step length}
+\section{Result}
+\section{Conclusion}
+
+% 1. Problem statement
+\input{./src/intro}
+
+% 2. Related work explanation
+\input{./src/related-work}
+
+% 3-1.method part
+\input{./src/method-1}
+
+% 3-2 method part
+\input{./src/method-2}
+
+% 3-3 method part
+\input{./src/method-3}
+
+% 4. conclusion
+\input{./src/conclusion}
+
+\end{document}

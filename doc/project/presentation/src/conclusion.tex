@@ -1,0 +1,40 @@
+% !TEX root=../main.tex
+\documentclass[beamer]{standalone}
+\begin{document}
+\begin{frame}{Summary}
+
+\begin{itemize}
+    \setlength\itemsep{1em}
+    \item Gradient filtering using the known propertices on target parameters
+    \item Test on the joint optimization problem, texture case
+    \item Due to the bias (with the rougly designed gradient filtering), \\ 
+    optimizing enviroment map shows a awful result
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Conclusion}
+
+    \begin{itemize}
+        \setlength\itemsep{1em}
+        \item Gradient filtering makes the convergence faster
+        \begin{itemize}
+            \item reduce noise
+            \item give a bigger step length
+        \end{itemize}
+        \item to global minimum, when properly applied 
+        \item Not likely mesh, bias becomes bigger problem in the texture optimization procedure
+    \end{itemize}
+    
+        % notes %
+        \note[item]{
+        }
+        
+    \end{frame}
+
+    \begin{frame}{Q\&A}
+
+        \note[item] {
+            this is the end of the presentation
+        }
+    \end{frame}
+\end{document}

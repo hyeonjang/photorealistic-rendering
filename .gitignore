@@ -1,0 +1,6 @@
+libtorch/
+build/
+.vscode/
+result/
+
+__pycache__/
