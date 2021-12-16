@@ -33,7 +33,7 @@
 \usepackage[utf8]{inputenc}
 % Make latex understand and use the typographic
 % rules of the language used in the document.
-\usepackage[danish,english]{babel}
+\usepackage[,english]{babel}
 % Use the palatino font
 \usepackage[sc]{mathpazo}
 \usepackage[numbered,framed]{matlab-prettifier}
@@ -123,8 +123,9 @@
 % Bibliography
 % http://en.wikibooks.org/wiki/LaTeX/Bibliography_Management
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\usepackage[backend=bibtex,  bibencoding=utf8 ]{biblatex}
-%\addbibresource{bib/mybib}
+\usepackage{csquotes}
+\usepackage[backend=bibtex, bibencoding=utf8, sorting=nyt]{biblatex}
+\addbibresource{bib/mybib}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Misc

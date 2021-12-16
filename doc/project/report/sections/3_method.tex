@@ -1,0 +1,31 @@
+\section*{Method}\label{ch:ch3label}
+
+In this section, we first introduce the modifed gradient descent method using a property of the target parameter, which shown in the previous work\cite{Nicolet2021Large}. Then, we translate this technique to our target domain, which is image.
+
+\subsection*{Modified gradient descent}
+\begin{align}{\label{eq1}}
+	x \leftarrow x - \gamma (I + \lambda L)^{-p} 
+\end{align}
+
+We need to modify the gradient descent as
+The simply form
+This form ot 
+work as the gradient filtering in mesh
+
+\subsection*{Laplacian operator on image processing}
+\begin{align}{\label{eq2}}
+	\frac{dL}{dc_t} = 0 \implies \beta^t\frac{1}{c_t}-\beta^t(\mu_t+\lambda_t)P_t=0 \implies \frac{1}{c_t}=(\mu_t+\lambda_t)P_t
+\end{align}
+In the case of mesh, appears as the matrix, 
+
+In image processing, laplacian operator can be derived from kernel.
+Image kernel
+
+\subsection*{Step size selection}
+There i and previous work choose this value as 15~50 by the abbreviation study
+Currently, I just apply learing rate.
+
+\subsection*{Biased method:gradient filtering}
+How about directly filtering gradients? As the from the hint of laplcian
+
+This will be discussed in the result section.
