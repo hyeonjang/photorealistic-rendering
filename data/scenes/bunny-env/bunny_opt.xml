@@ -4,7 +4,7 @@
     </integrator>
 
     <emitter type="envmap" id="my_envmap">
-        <string name="filename" value="../../envmap/512x256.png"/>
+        <string name="filename" value="../../texture/512x512.png"/>
     </emitter>
 
     <shape type="obj" id="bunny">
