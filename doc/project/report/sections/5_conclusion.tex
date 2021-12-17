@@ -1,3 +1,5 @@
 \section*{Conclusion}\label{ch:ch5label}
 
-Due to the accumulated bias, optimizing scene parameter becomes more awful. This becomes bigger problem in optimizing images like texture and enviroment map
+We have applied \emph{large steps}\cite{Nicolet2021Large} to joint optimization problem, which targets the two texture images, which are albedo texture and environment map. Additionally, as we consider that this method has relation to gradient filtering, we also have applied directly a gaussian filtering to texture gradient.
+
+Though this looks working well when target parameter is one, due to the accumulated bias, optimizing scene parameter becomes more awful. This becomes bigger problem in optimizing images like texture and enviroment map than mesh cases.
