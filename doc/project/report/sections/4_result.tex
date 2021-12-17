@@ -1,15 +1,12 @@
 \section*{Result}\label{ch:ch4label}
 
-Learing rate 0.1 is used for a texture optimization (Cornell box) and 0.01 is used for joint optimization (Bunny)
-
 \subsection*{Laplacian smooth version}
-
-\subsubsection{A texture optimization}
+\subsubsection{1. A texture optimization}
 
 For the comparision, MSE is estimated under the equal iterations.
-currently, due to the naive implementation (3 nested for loop paralleled by only 32 threading), it is not possible to evaluate equal time comparsions. It takes eta 30 sec to compute the form $(I+\lambda)^{-1}$ under the 512x512 resolution texture every iterations. 
+Currently, due to the naive implementation (3 nested for loop paralleled by only 32 threading), it is not possible to evaluate equal time comparsions. It takes eta 30 sec to compute the form $(I+\lambda)^{-1}$ under the 512x512 resolution texture every iterations. 
 
-As shown in the figure\ref{fig:a-texture-comparision-laplacian} and table\ref{table:a-texture-comparision-laplacian}, the result indicates the faster convergence speed at the same iterations.
+As shown in the figure\ref{fig:a-texture-comparision-laplacian} and table\ref{table:a-texture-comparision-laplacian}, large steps indicates the faster convergence speed at the same iteration.
 
 \begin{figure}[!h]
     \includegraphics[width=\textwidth]{figures/result-1.png}
@@ -29,7 +26,7 @@ As shown in the figure\ref{fig:a-texture-comparision-laplacian} and table\ref{ta
 	\label{table:a-texture-comparision-laplacian}
 \end{table}
 
-\subsubsection{Joint optimization for two texture (Albedo texture and Environment map)}
+\subsubsection{2. Joint optimization for two texture (Albedo texture and Environment map)}
 
 However, in the joint optimization case, 
 
@@ -38,19 +35,22 @@ Every iteration, generate artifacts image result only on the environment map. Fo
 \begin{figure}[!h]
     \includegraphics[width=\textwidth]{figures/result-2.png}
     \caption{comparision of a large steps joint texture optimization}
-    \label{fig:a-texture-comparision-joint}
+    \label{fig:joint-texture-comparision-laplacian}
 \end{figure}
 
 \begin{figure}[!h]
     \includegraphics[width=\textwidth]{figures/result-2-1.png}
-    \caption{comparision of a texture optimization result}
-    \label{fig:a-texture-comparision}
+    \caption{comparision of a large steps joint texture optimization result: only environment case}
+    \label{fig:joint-texture-comparision-laplacian-envmap}
 \end{figure}
 
+\newpage
 \subsection*{Biased version: just gaussian filtering}
 
 Laplacian smooth gradient descent can be known propertices of original target parameters. 
 biased version
+
+\subsubsection{1. A texture optimization}
 
 \begin{figure}[!h]
     \includegraphics[width=\textwidth]{figures/result-3.png}
@@ -58,6 +58,7 @@ biased version
     \label{fig:a-texture-comparision}
 \end{figure}
 
+\subsubsection{2. Joint optimization for two texture (Albedo texture and Environment map)}
 
 \begin{figure}[!h]
     \includegraphics[width=\textwidth]{figures/result-4.png}
