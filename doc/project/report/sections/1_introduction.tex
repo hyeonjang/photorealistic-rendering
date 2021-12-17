@@ -4,7 +4,7 @@ Recently, by the appearance of physically based differentiable rendering, we can
 
 However, when reconstructing scene parameters from images, we often encounter the problem to estimate several unknown parameters at the same time. This means that we should derive optimal values from high dimensional function, which usually represents as a non-convex function.
 
-Moreover, due to the variance from Monte carlo intergration and stochastic gradient descent, optimization process is stucked to a local minima, especially in the case of targeting the high dimensional parameters. Because of this problem, a small learning rate has been enforced and this results the slow convergence.
+Moreover, due to the variance from Monte Carlo integration and stochastic gradient descent, optimization process is stuck to local minima, especially in the case of targeting the high dimensional parameters. Because of this problem, a small learning rate has been enforced and this results the slow convergence.
 
 To take larger steps in gradient descent, the laplacian gradient descent method has been proposed, which approximates the second derivation optimization technique\cite{osher2018laplacian}.
 Also, this approach has been adapted to optimizing geometry in differentiable rendering\cite{Nicolet2021Large}.
