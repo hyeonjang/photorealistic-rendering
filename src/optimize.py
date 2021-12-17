@@ -95,10 +95,13 @@ def optimize_ad():
     ref_image, ref_texture, ref_envmap = make_reference()
     params_ref = {}
 
+    index = 0
     if ref_texture is not None:
-        params_ref[params_names[0]] = ref_texture
-    # if ref_envmap is not None:
-    #     params_ref[params_names[0]] = ref_envmap
+        params_ref[params_names[index]] = ref_texture
+        index += 1
+    if ref_envmap is not None:
+        params_ref[params_names[index]] = ref_envmap
+        index += 1
     
     # ========================================================
     # trainning option creation 
@@ -148,9 +151,8 @@ def optimize_ad():
 
         print('[{:03d}] Loss: {:.6f}, took {:.2f}s'.format(i, image_loss, time.time() - t0))
         ru.write_image(os.path.join(outdir['out'], f"out_{i:04d}.exr"), rendered)
-        ru.write_image(os.path.join(outdir['tex'], f"tex_{i:04d}.exr"), params[params_names[0]], (512,512))
-        # ru.write_image(os.path.join(outdir['tex'], f"tex_{i:04d}.exr"), params[params_names[0]], (256,256))
-        # ru.write_image(os.path.join(outdir['env'], f"env_{i:04d}.exr"), params[params_names[1]], (512,512))
+        for name in params_names:
+            ru.write_image(os.path.join(outdir['tex'], f"{name}_{i:04d}.exr"), params[name], (512,512))
 
     f.close()
 

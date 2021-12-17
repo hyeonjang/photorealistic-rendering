@@ -108,9 +108,9 @@ def adam(params: List[Tensor],
             l_p = i + step_size*(w-d)
 
             z = time.time()
-            # g = cv2.filter2D(grad.detach().cpu().numpy(), -1, l_p)
-            # g = torch.from_numpy(g).to(device='cuda')
-            g = torch.ops.image.laplacian_smooth(param, grad, step_size)
+            g = cv2.filter2D(grad.detach().cpu().numpy(), -1, 10*step_size*k)
+            g = torch.from_numpy(g).to(device='cuda')
+            # g = torch.ops.image.laplacian_smooth(param, grad, step_size)
             # g = convolve2d(param.detach(), grad.detach())
             print(time.time()-z)
 
