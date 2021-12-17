@@ -1,31 +1,35 @@
 \section*{Method}\label{ch:ch3label}
 
-In this section, we first introduce the modifed gradient descent method using a property of the target parameter, which shown in the previous work\cite{Nicolet2021Large}. Then, we translate this technique to our target domain, which is image.
+In this section, we first introduce the modifed gradient descent method using a property of the target parameter, which shown in the previous work\cite{Nicolet2021Large}. Then, we translate this technique to our target domain, image.
+
+\subsection*{Laplacian operator on image processing}
+In image processing, laplacian operator is called \emph{graph laplacian} and this is derived from kernels. Similar as the mesh cases, depending on the kernel has various forms similar as mesh case.
+\begin{align}{\label{eq2}}
+	\frac{dL}{dc_t} = 0 \implies \beta^t\frac{1}{c_t}-\beta^t(\mu_t+\lambda_t)P_t=0 \implies \frac{1}{c_t}=(\mu_t+\lambda_t)P_t
+\end{align}
+Image kernel
 
 \subsection*{Modified gradient descent}
 \begin{align}{\label{eq1}}
 	x \leftarrow x - \gamma (I + \lambda L)^{-p} 
 \end{align}
 
+In the previous work\cite{Nicolet2021Large}, $L$ 
 We need to modify the gradient descent as
 The simply form
 This form ot 
 work as the gradient filtering in mesh
 
-\subsection*{Laplacian operator on image processing}
-\begin{align}{\label{eq2}}
-	\frac{dL}{dc_t} = 0 \implies \beta^t\frac{1}{c_t}-\beta^t(\mu_t+\lambda_t)P_t=0 \implies \frac{1}{c_t}=(\mu_t+\lambda_t)P_t
-\end{align}
-In the case of mesh, appears as the matrix, 
-
-In image processing, laplacian operator can be derived from kernel.
-Image kernel
+For the kernel, in this work, 3x3 gaussian kernel is used.
 
 \subsection*{Step size selection}
 There i and previous work choose this value as 15~50 by the abbreviation study
 Currently, I just apply learing rate.
 
-\subsection*{Biased method:gradient filtering}
-How about directly filtering gradients? As the from the hint of laplcian
+\subsection*{Biased method: just filtering gradient}
 
-This will be discussed in the result section.
+How about directly filtering gradients? Because the large steps method does a role to reduce noisy gradient on the mesh, then direct filtering has some effect for this.
+
+We can expect that, if the gaussian assumption is well fit on our target image, the step size of noisy gradients would be reduced and other gradient steps could be larger.
+
+The result will be discussed in the later section.
