@@ -1,7 +1,7 @@
 \section*{Method}\label{ch:ch3label}
 
 \subsection*{Laplacian operator on image processing}
-In image processing, laplacian operator is called \emph{graph laplacian} and this is derived from kernels. As similar as the mesh cases, graph laplacian has various forms depending on the kind of kernels\cite{milanfar2012tour} and the combination of kernels and diagonal matries.
+In image processing, Laplacian operator is called \emph{graph Laplacian} and this is derived from kernels. As similar as the mesh cases, graph Laplacian has various forms depending on the kind of kernels\cite{milanfar2012tour} and the combination of kernels and diagonal matrices.
 
 \begin{table}[!h]
 	\centering
@@ -11,27 +11,21 @@ In image processing, laplacian operator is called \emph{graph laplacian} and thi
 		Un-normalized   & $D - K$                  & Yes            & [0, n] \\ \hline
 		Normalized      & $I - D^{-1/2}KD^{-1/2}$  & No             & [0, 2] \\ \hline  
 	\end{tabular}}
-	\caption{graph laplacian in image processing}
-	\label{table:graph-laplacian-image-processing}
+	\caption{graph Laplacian in image processing}
+	\label{table:graph-Laplacian-image-processing}
 \end{table}
 
-In this project, we have empirically chosen unnormalized graph laplacian\ref{table:graph-laplacian-image-processing} from the several tests and only the gaussian kernel is tested. 
-
-\subsection*{Modified gradient descent}
-\begin{align}{\label{eq1}}
-	x \leftarrow x - \gamma (I + \lambda L)^{-p} 
+In the previous work\cite{Nicolet2021Large}, $L$ is calculated from cotangent matrix of the mesh. For an adapting on image domain, updated gradient is computed by convolution operation between the Laplacian of texture and the texture gradient. We have empirically chosen un-normalized graph Laplacian\ref{table:graph-Laplacian-image-processing} from the several tests and only the gaussian kernel is tested. Therefore, the finally designed iterative form is like below:
+\begin{align}{\label{eq}}
+	x \leftarrow x - \eta (I + \lambda (d^{-1}k-d))^{-1} {\frac{\partial \Phi}{\partial x}}
 \end{align}
-
-In the previous work\cite{Nicolet2021Large}, $L$ is calculated from cotangent matrix of the mesh. In this project, L is computed convolution operation with laplacian of the kernel. 
 
 \subsection*{Step size selection}
 
-The step size $\lambda$ works as smoothing factor. When $\lambda$ value becomes smaller, the smooth gradient descent method shows a similar behavior to original gradient descent method. Therefore, this is needed to be adaptively controlled.
-
-Nicolet et al\cite{Nicolet2021Large} choose this $\lambda$ value as from 15 to 50 by abbreviation study. Currently, we just apply the scaled learing rate to the step size $\lambda$.
+The step size $\lambda$ works as smoothing factor. When $\lambda$ value becomes smaller, the smooth gradient descent method shows a similar behavior to original gradient descent method. This is needed to be adaptively controlled. Currently, we just apply the scaled learning rate to the step size $\lambda$.
 
 \subsection*{Biased method: gradient filtering}
 
-How about directly filtering gradients? Because \emph{large steps} method does a role like reducing noisy gradient on the mesh, direct filtering could have some effects on this process.
+How about directly filtering gradients? As we interpret \emph{large steps} method as a role like reducing noisy gradient on the mesh, then direct filtering could also have similar effects on this process.
 
-If an asssumption of gaussian distributuion is well fit on our target domain, by adding gaussian kernel filter, we can expect that a step size of noisy gradients would be reduced and other gradient steps could be larger. This result will be discussed in the later section.
+If an assumption of gaussian distribution is well fit on our target domain, by just adding gaussian kernel filter on gradient, we can expect the effect that a step size of noisy gradients would be reduced, and the other gradient steps could be larger. This result will be discussed in the later section.

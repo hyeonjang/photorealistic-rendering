@@ -6,7 +6,7 @@ However, when reconstructing scene parameters from images, we often encounter th
 
 Moreover, due to the variance from Monte Carlo integration and stochastic gradient descent, optimization process is stuck to local minima, especially in the case of targeting the high dimensional parameters. Because of this problem, a small learning rate has been enforced and this results the slow convergence.
 
-To take larger steps in gradient descent, the laplacian gradient descent method has been proposed, which approximates the second derivation optimization technique\cite{osher2018laplacian}.
+To take larger steps in gradient descent, the Laplacian gradient descent method has been proposed, which approximates the second derivation optimization technique\cite{osher2018laplacian}.
 Also, this approach has been adapted to optimizing geometry in differentiable rendering\cite{Nicolet2021Large}.
 
-In this project, we attempt to apply laplacian smooth gradient descent on joint optimization problem, which also suffers from being stuck in local minima. To make the problem more precisely, we limit the target scene parameters as an environment map and a diffuse texture of an object.
+In this project, we attempt to apply Laplacian smooth gradient descent on joint optimization problem, which also suffers from being stuck in local minima. To make the problem more precisely, we limit the target scene parameters as an environment map and a diffuse texture of an object.

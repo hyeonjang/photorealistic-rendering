@@ -1,5 +1,7 @@
 \section*{Conclusion}\label{ch:ch5label}
 
-We have applied \emph{large steps}\cite{Nicolet2021Large} to joint optimization problem, which targets the two texture images, which are albedo texture and environment map. Additionally, as we consider that this method has relation to gradient filtering, we also have applied directly a gaussian filtering to texture gradient.
+We have applied \emph{large steps}\cite{Nicolet2021Large} to joint optimization problem, which targets the two texture images, which are albedo texture and environment map. 
 
-Though this looks working well when target parameter is one, due to the accumulated bias, optimizing scene parameter becomes more awful. This becomes bigger problem in optimizing images like texture and enviroment map than mesh cases.
+On the joint optimization, due to the generated artifacts on environment map, the final result failed to converge. This means that environment map has different properties with texture albedo, and we cannot adapt the identical \emph{large steps} method to both parameters at once. We need a deeper considering with the properties of scene parameters and adapt different methods individually.
+
+Additionally, under the assumption that \emph{large steps} has relation to gradient filtering, we also have applied directly a gaussian filtering to texture gradient. Due to the accumulated bias every iteration, optimizing scene parameter becomes more awful. And this is a huge problem in image domain, not likely in mesh.
